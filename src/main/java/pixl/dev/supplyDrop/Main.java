@@ -2,7 +2,7 @@ package pixl.dev.supplyDrop;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class SupplyDrop extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {

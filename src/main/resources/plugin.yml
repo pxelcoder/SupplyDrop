@@ -2,7 +2,7 @@ name: SupplyDrop
 description: $description
 version: '${version}'
 
-main: pixl.dev.supplyDrop.SupplyDrop
+main: pixl.dev.supplyDrop.Main
 api-version: '26.2'
 load: POSTWORLD
 
