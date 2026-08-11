@@ -14,7 +14,7 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         getLogger().info("SupplyDrop has been enabled!");
 
-        supplyDropManager = new SupplyDropManager();
+        supplyDropManager = new SupplyDropManager(this);
 
     }
 

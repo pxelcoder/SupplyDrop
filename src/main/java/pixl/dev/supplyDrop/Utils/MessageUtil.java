@@ -1,15 +1,16 @@
 package pixl.dev.supplyDrop.Utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import pixl.dev.supplyDrop.Main;
 
 public class MessageUtil {
     // A handler for the config messages to keep it from getting too messy in the main managers
 
-    private final Main plugin;
+    private final Plugin plugin;
 
-    public MessageUtil(Main plugin) {
+    public MessageUtil(Plugin plugin) {
         this.plugin = plugin;
     }
 
@@ -21,6 +22,13 @@ public class MessageUtil {
         }
         // Automatically adds the prefix to the message that is returned
         return color(plugin.getConfig().getString("messages.prefix")) + color(message);
+    }
+    public String getPrefix() {
+        String msg = plugin.getConfig().getString("messages.prefix");
+        if (msg == null) {
+            return "";
+        }
+        return msg;
     }
 
     private String color(String message) {

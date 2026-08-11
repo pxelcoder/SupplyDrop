@@ -4,15 +4,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.plugin.Plugin;
 import pixl.dev.supplyDrop.Main;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Mainly utility, DropLocation chooses a random location to drop the SupplyDrop and ensures that it is a safe location.
+
 public class DropLocation {
 
-    private final Main plugin;
+    private final Plugin plugin;
 
-    public DropLocation(Main plugin) {
+    public DropLocation(Plugin plugin) {
         this.plugin = plugin;
     }
     private int getMaxDistance(){
