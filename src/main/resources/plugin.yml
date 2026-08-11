@@ -1,0 +1,9 @@
+name: SupplyDrop
+description: $description
+version: '${version}'
+
+main: pixl.dev.supplyDrop.SupplyDrop
+api-version: '26.2'
+load: POSTWORLD
+
+authors: [ PixlDev ]
