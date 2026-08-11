@@ -79,10 +79,9 @@ loot_table:
 # Message Settings
 # ------------------------------------------------------------------------------- #
 messages:
-  prefix: ""
-  incoming: ""
-  opened: ""
-  already_opened: ""
+  prefix: "&l[ &4&lSupplyDrop&r&l ] &r"
+  incoming: "A supply drop is incoming! &7Location: %x% %y% %z%"
+  opened: "&eThe supply drop has been opened by %player%."
 
 # ------------------------------------------------------------------------------- #
 # Effect Settings
