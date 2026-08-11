@@ -24,6 +24,8 @@ settings:
 # ------------------------------------------------------------------------------- #
 spawn:
   # Maximum distance from the world's spawnpoint
+  # To clarify any confusion, this means that, if the max distance was 1000 and spawn was 0,0, it would
+  # be able to spawn anywhere from -1000 to 1000 in both x and y directions.
   max_distance: 1000
 
 # ------------------------------------------------------------------------------- #
