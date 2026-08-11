@@ -1,0 +1,101 @@
+# ------------------------------------------------------------------------------- #
+# S U P P L Y D R O P   C O N F I G
+# ------------------------------------------------------------------------------- #
+# Made by PixlDev (@Pixltrail on Discord)
+# https://github.com/pxelcoder
+
+# A plugin which spawns supply drops as an event.
+
+# ------------------------------------------------------------------------------- #
+# General Settings
+# ------------------------------------------------------------------------------- #
+settings:
+  # World where the supply drops can spawn.
+  world: "world"
+
+  # Automatic supply drops
+  automatic_drops: true
+
+  # Time between automatic drops (seconds)
+  time: 3600
+
+# ------------------------------------------------------------------------------- #
+# Spawn Settings
+# ------------------------------------------------------------------------------- #
+spawn:
+  # Maximum distance from the world's spawnpoint
+  # To clarify any confusion, this means that, if the max distance was 1000 and spawn was 0,0, it would
+  # be able to spawn anywhere from -1000 to 1000 in both x and y directions.
+  max_distance: 1000
+
+# ------------------------------------------------------------------------------- #
+# Falling Crate Settings
+# ------------------------------------------------------------------------------- #
+falling_crate:
+  # Height above landing location that the crate starts falling at
+  height: 25
+
+  # Enables animation (disable if performance is a major issue)
+  animation: true
+
+  # Particle used while falling
+  particle: SMOKE
+
+  # Sound played while the crate falls
+  sound: BLOCK_ANVIL_HIT
+
+  # Speed of the crate in blocks/second (this impacts both the animation speed and the frequency of the sound)
+  speed: 5
+
+# ------------------------------------------------------------------------------- #
+# Loot Settings
+# ------------------------------------------------------------------------------- #
+loot:
+  # Number of items selected from the loot
+  min_items: 1
+  max_items: 3
+
+  # Whether duplicates are allowed
+  allow_duplicates: false
+
+  # Item amounts
+  min_amount: 1
+  max_amount: 5
+
+# ------------------------------------------------------------------------------- #
+# Loot Table Settings
+# ------------------------------------------------------------------------------- #
+loot_table:
+  # Items that are randomly selected from
+  items:
+    diamond:
+      material: DIAMOND
+
+    emerald:
+      material: EMERALD
+
+    gold:
+      material: GOLD_INGOT
+
+# ------------------------------------------------------------------------------- #
+# Message Settings
+# ------------------------------------------------------------------------------- #
+messages:
+  prefix: "&l[ &4&lSupplyDrop&r&l ] &r"
+  incoming: "A supply drop is incoming! &7Location: %x% %y% %z%"
+  opened: "&eThe supply drop has been opened by %player%."
+
+# ------------------------------------------------------------------------------- #
+# Effect Settings
+# ------------------------------------------------------------------------------- #
+effects:
+  # Effect when the crate initially lands
+  landing_effect: FLAME
+
+  # Effect when it is opened
+  opening_effect: FLAME
+
+# For any updates, additional features, or otherwise, please contact the plugin developer (Pixltrail).
+# I hope you enjoy this plugin!
+
+# This plugin is not intended for use in any server without the knowledge and permission of Pixltrail.
