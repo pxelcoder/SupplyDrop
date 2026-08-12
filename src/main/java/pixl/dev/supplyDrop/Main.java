@@ -1,12 +1,19 @@
 package pixl.dev.supplyDrop;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pixl.dev.supplyDrop.Commands.SupplyDropCommand;
+import pixl.dev.supplyDrop.Drop.DropLocation;
 import pixl.dev.supplyDrop.Drop.SupplyDrop;
 import pixl.dev.supplyDrop.Drop.SupplyDropManager;
+import pixl.dev.supplyDrop.Loot.LootManager;
+import pixl.dev.supplyDrop.Utils.MessageUtil;
 
 public final class Main extends JavaPlugin {
 
     private SupplyDropManager supplyDropManager;
+    private DropLocation dropLocation;
+    private MessageUtil messageUtil;
+    private LootManager lootManager;
 
     @Override
     public void onEnable() {
@@ -14,8 +21,16 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         getLogger().info("SupplyDrop has been enabled!");
 
-        supplyDropManager = new SupplyDropManager(this);
+        // utils and managers
+        messageUtil = new MessageUtil(this);
+        lootManager = new LootManager(this);
+        dropLocation = new DropLocation(this);
 
+        supplyDropManager = new SupplyDropManager(this, dropLocation, messageUtil,  lootManager);
+
+        SupplyDropCommand sdc = new SupplyDropCommand(this,messageUtil,supplyDropManager);
+        getCommand("supplydrop").setExecutor(sdc); // command init
+        getCommand("supplydrop").setTabCompleter(sdc); // command tab completer
     }
 
     @Override

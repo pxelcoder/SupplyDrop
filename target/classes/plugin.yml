@@ -3,7 +3,7 @@ description: $description
 version: '1.0'
 
 main: pixl.dev.supplyDrop.Main
-api-version: '26.2'
+api-version: '1.21'
 load: POSTWORLD
 
 authors: [ PixlDev ]
@@ -11,7 +11,7 @@ authors: [ PixlDev ]
 commands:
   supplydrop:
     description: This is the general management command for the SupplyDrop plugin.
-    usage: /<command> <example|example>
+    usage: /<command> <start|stop>
     permissions:
       supplydrop.player:
         default: true

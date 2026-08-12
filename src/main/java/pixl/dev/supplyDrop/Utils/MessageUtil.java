@@ -1,6 +1,7 @@
 package pixl.dev.supplyDrop.Utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import pixl.dev.supplyDrop.Main;
@@ -21,10 +22,25 @@ public class MessageUtil {
             return "";
         }
         // Automatically adds the prefix to the message that is returned
-        return color(plugin.getConfig().getString("messages.prefix")) + color(message);
+        return color(plugin.getConfig().getString("messages.prefix")) + color(msg);
+    }
+    public String getMessage(String message, Location location){
+        String msg = plugin.getConfig().getString(message);
+
+        if (msg == null) {
+            return "";
+        }
+        // Replaces placeholders
+        msg = msg
+                .replace("%x%", String.valueOf(location.getBlockX()))
+                .replace("%y%", String.valueOf(location.getBlockY()))
+                .replace("%z%", String.valueOf(location.getBlockZ()));
+
+        // Automatically adds the prefix to the message that is returned
+        return color(plugin.getConfig().getString("messages.prefix")) + color(msg);
     }
     public String getPrefix() {
-        String msg = plugin.getConfig().getString("messages.prefix");
+        String msg = color(plugin.getConfig().getString("messages.prefix"));
         if (msg == null) {
             return "";
         }

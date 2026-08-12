@@ -31,12 +31,15 @@ public class SupplyDropCommand implements CommandExecutor, TabCompleter {
             }
 
             // Normal player permission command chain
-            if (p.hasPermission("supplydrop.player")) {
-            }
-            // Admin permission command chain
-            if (p.hasPermission("supplydrop.admin")) {
-                if (args[0].equalsIgnoreCase("start")) {
-
+            else {
+                if (p.hasPermission("supplydrop.player")) {
+                }
+                // Admin permission command chain
+                if (p.hasPermission("supplydrop.admin")) {
+                    if (args[0].equalsIgnoreCase("start")) {
+                        // add a check to see if a drop is active
+                        supplyDropManager.startDrop();
+                    }
                 }
             }
         }

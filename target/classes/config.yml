@@ -44,9 +44,6 @@ falling_crate:
   # Sound played while the crate falls
   sound: BLOCK_ANVIL_HIT
 
-  # Speed of the crate in blocks/second (this impacts both the animation speed and the frequency of the sound)
-  speed: 5
-
 # ------------------------------------------------------------------------------- #
 # Loot Settings
 # ------------------------------------------------------------------------------- #

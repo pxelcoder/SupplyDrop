@@ -1,8 +1,9 @@
 package pixl.dev.supplyDrop.Drop;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.BlockDisplay;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import pixl.dev.supplyDrop.Utils.MessageUtil;
@@ -19,41 +20,36 @@ public class SupplyDrop {
     }
     public void startDrop(Location location){
         startDropAnimation(location);
-        messageUtil.getMessage("messages.incoming");
+        String msg = messageUtil.getMessage("messages.incoming", location);
+        Bukkit.broadcastMessage(msg);
     }
     private void startDropAnimation(Location location){
-        int speed = getSpeed();
         int height = getHeightAbove();
 
         Location startLocation = location.clone().add(0,height,0);
 
-        FallingBlock chest = location.getWorld().spawnFallingBlock(startLocation,Material.CHEST.createBlockData());
-        chest.setGravity(false);
-        chest.setDropItem(false);
+        startLocation.getBlock().setType(Material.CHEST);
 
-        double blocksPerTick = speed/20.0;
+        int ticksperblock = 15;
 
         new BukkitRunnable(){
             private final Location currentLocation = startLocation.clone();
 
-            // Brings a fallingblock item down to the location, removes it, and drops a real chest there instead.
+
+            // Brings a blockdisplay item down to the location, removes it, and drops a real chest there instead.
             @Override
             public void run(){
-                if (currentLocation.getY()<=location.getY()){
-                    chest.remove();
-                    dropChest(location);
+                if (currentLocation.getY()<=location.getY()){ // cancels if reached location
                     cancel();
                     return;
                 }
-                currentLocation.subtract(0,blocksPerTick,0);
-                chest.teleport(currentLocation);
+                // moves chest down
+                currentLocation.getBlock().setType(Material.AIR);
+                currentLocation.subtract(0,1,0);
+                currentLocation.getBlock().setType(Material.CHEST);
+
             }
-        }.runTaskTimer(plugin,0L,1L);
-
-    }
-
-    private void dropChest(Location location){
-        location.getBlock().setType(Material.CHEST);
+        }.runTaskTimer(plugin,0L,ticksperblock);
     }
     private void putLoot(Location location){
         return;
@@ -61,9 +57,6 @@ public class SupplyDrop {
 
     // CONFIG READING //
 
-    private int getSpeed(){
-        return plugin.getConfig().getInt("falling_crate.speed");
-    }
     private int getHeightAbove(){
         return plugin.getConfig().getInt("falling_crate.height");
     }
