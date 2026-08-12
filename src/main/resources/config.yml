@@ -16,8 +16,8 @@ settings:
   # Automatic supply drops
   automatic_drops: true
 
-  # Time between automatic drops (seconds)
-  time: 3600
+  # Time between automatic drops (ticks)
+  time: 12000
 
 # ------------------------------------------------------------------------------- #
 # Spawn Settings
@@ -35,14 +35,8 @@ falling_crate:
   # Height above landing location that the crate starts falling at
   height: 25
 
-  # Enables animation (disable if performance is a major issue)
-  animation: true
-
   # Particle used while falling
   particle: SMOKE
-
-  # Sound played while the crate falls
-  sound: BLOCK_ANVIL_HIT
 
 # ------------------------------------------------------------------------------- #
 # Loot Settings
@@ -51,9 +45,6 @@ loot:
   # Number of items selected from the loot
   min_items: 1
   max_items: 3
-
-  # Whether duplicates are allowed
-  allow_duplicates: false
 
   # Item amounts
   min_amount: 1
@@ -86,11 +77,8 @@ messages:
 # Effect Settings
 # ------------------------------------------------------------------------------- #
 effects:
-  # Effect when the crate initially lands
-  landing_effect: FLAME
-
-  # Effect when it is opened
-  opening_effect: FLAME
+  # Effect when the crate lands and when it is opened
+  landing_effect: SMOKE
 
 # For any updates, additional features, or otherwise, please contact the plugin developer (Pixltrail).
 # I hope you enjoy this plugin!

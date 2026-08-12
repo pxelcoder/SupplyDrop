@@ -2,6 +2,7 @@ package pixl.dev.supplyDrop.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import pixl.dev.supplyDrop.Main;
@@ -41,6 +42,14 @@ public class MessageUtil {
     }
     public String getPrefix() {
         String msg = color(plugin.getConfig().getString("messages.prefix"));
+        if (msg == null) {
+            return "";
+        }
+        return msg;
+    }
+    public String getOpeningMessage(HumanEntity humanEntity) {
+        String msg = getMessage("messages.opened");
+        msg = msg.replace("%player%", humanEntity.getName());
         if (msg == null) {
             return "";
         }

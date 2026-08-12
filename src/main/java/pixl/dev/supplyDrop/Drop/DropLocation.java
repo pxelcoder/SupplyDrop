@@ -49,7 +49,7 @@ public class DropLocation {
         ThreadLocalRandom random = ThreadLocalRandom.current(); // Note to self, this is new to me so I might be misunderstanding it
         int x = random.nextInt(spawn.getBlockX()-maxDistance, spawn.getBlockX()+maxDistance);
         int z = random.nextInt(spawn.getBlockZ()-maxDistance, spawn.getBlockZ()+maxDistance);
-        int y = world.getHighestBlockYAt(x, z);
+        int y = world.getHighestBlockYAt(x, z)+1;
 
         Location location = new Location(world, x, y, z);
         return location;

@@ -29,20 +29,16 @@ public class LootManager {
 
         List<String> items = new ArrayList<>(configsection.getKeys(false));
 
-        int min = plugin.getConfig().getInt("loot.min_amount",1);
-        int max = plugin.getConfig().getInt("loot.max_amount",3);
-
-        boolean allowdupes = plugin.getConfig().getBoolean("loot.allow_duplicates",false);
+        int min = plugin.getConfig().getInt("loot.min_items",1);
+        int max = plugin.getConfig().getInt("loot.max_items",3);
 
         int amount = ThreadLocalRandom.current().nextInt(min,max+1);
 
-        if (allowdupes) {
             for (int i=0;i<amount;i++) {
                 String itemName = items.get(ThreadLocalRandom.current().nextInt(0,items.size()));
                 dropItem(location,itemName);
             }
         }
-    }
     private void dropItem(Location location, String itemName) {
         String material = plugin.getConfig().getString("loot_table.items." + itemName + ".material");
 
@@ -52,10 +48,10 @@ public class LootManager {
             plugin.getLogger().warning("Material not found: " + material);
             return;
         }
-        int min = plugin.getConfig().getInt("loot.min_items",1);
-        int max = plugin.getConfig().getInt("loot.max_items",3);
+        int minamount = plugin.getConfig().getInt("loot.min_amount",1);
+        int maxamount = plugin.getConfig().getInt("loot.max_amount",3);
 
-        int amount = ThreadLocalRandom.current().nextInt(min,max+1);
+        int amount = ThreadLocalRandom.current().nextInt(minamount,maxamount+1);
 
         ItemStack item = new ItemStack(mat,amount);
         location.getWorld().dropItemNaturally(location,item);

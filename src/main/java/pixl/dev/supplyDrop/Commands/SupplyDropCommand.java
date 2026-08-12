@@ -40,6 +40,9 @@ public class SupplyDropCommand implements CommandExecutor, TabCompleter {
                         // add a check to see if a drop is active
                         supplyDropManager.startDrop();
                     }
+                    if (args[0].equalsIgnoreCase("stop")) {
+                        supplyDropManager.stopDrop();
+                    }
                 }
             }
         }
@@ -52,6 +55,7 @@ public class SupplyDropCommand implements CommandExecutor, TabCompleter {
 
         if (args.length == 1) {
             completions.add("start");
+            completions.add("stop");
         }
         if (args.length == 2) {
 

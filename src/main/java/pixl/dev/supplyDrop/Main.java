@@ -5,6 +5,7 @@ import pixl.dev.supplyDrop.Commands.SupplyDropCommand;
 import pixl.dev.supplyDrop.Drop.DropLocation;
 import pixl.dev.supplyDrop.Drop.SupplyDrop;
 import pixl.dev.supplyDrop.Drop.SupplyDropManager;
+import pixl.dev.supplyDrop.Listeners.ClaimListener;
 import pixl.dev.supplyDrop.Loot.LootManager;
 import pixl.dev.supplyDrop.Utils.MessageUtil;
 
@@ -27,6 +28,10 @@ public final class Main extends JavaPlugin {
         dropLocation = new DropLocation(this);
 
         supplyDropManager = new SupplyDropManager(this, dropLocation, messageUtil,  lootManager);
+        supplyDropManager.startScheduledSupplyDrops();
+
+        // listeners
+        getServer().getPluginManager().registerEvents(new ClaimListener(supplyDropManager,(supplyDropManager.getDropKey()),messageUtil),this);
 
         SupplyDropCommand sdc = new SupplyDropCommand(this,messageUtil,supplyDropManager);
         getCommand("supplydrop").setExecutor(sdc); // command init
