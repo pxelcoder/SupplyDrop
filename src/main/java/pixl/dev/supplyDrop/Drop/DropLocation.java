@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
-import pixl.dev.supplyDrop.Main;
 
 import java.util.concurrent.ThreadLocalRandom;
 

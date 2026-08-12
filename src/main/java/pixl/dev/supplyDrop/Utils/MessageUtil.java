@@ -4,8 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
-import pixl.dev.supplyDrop.Main;
 
 public class MessageUtil {
     // A handler for the config messages to keep it from getting too messy in the main managers
